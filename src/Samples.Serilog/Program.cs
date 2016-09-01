@@ -2,7 +2,7 @@
 using Serilog;
 using Serilog.Context;
 
-namespace SerilogSample
+namespace Samples.Serilog
 {
 	class Program
 	{
@@ -13,9 +13,9 @@ namespace SerilogSample
 			var number = 5;
 			var count = 1;
 			var name = "Seva";
-			var template = 
-				"{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level}] {Message}{NewLine}"+
-				"Version = {Version} EnvironmentUserName = {EnvironmentUserName} MachineName = {MachineName} ThreadId = {ThreadId}"+
+			var template =
+				"{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level}] {Message}{NewLine}" +
+				"Version = {Version} EnvironmentUserName = {EnvironmentUserName} MachineName = {MachineName} ThreadId = {ThreadId}" +
 				"{NewLine}{Exception}";
 
 			var log = new LoggerConfiguration()
@@ -32,9 +32,9 @@ namespace SerilogSample
 				.WriteTo.Seq("http://localhost:5341")
 				.CreateLogger();
 
-			log.Information("Hello Name = {Name} Log Count = {Count} Number = {Number} Object = {@Object}", 
+			log.Information("Hello Name = {Name} Log Count = {Count} Number = {Number} Object = {@Object}",
 				name, count, number, obj);
-			
+
 			int a = 10, b = 0;
 			try
 			{
