@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{14D02B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samples.Serilog", "src\Samples.Serilog\Samples.Serilog.csproj", "{CA5FE31F-A49A-41EE-AE2E-0C4F46683642}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samples.WcfWeb", "Samples.WcfWeb\Samples.WcfWeb.csproj", "{B411712D-0B64-4975-9963-CC17E4B14A03}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,6 +24,10 @@ Global
 		{CA5FE31F-A49A-41EE-AE2E-0C4F46683642}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA5FE31F-A49A-41EE-AE2E-0C4F46683642}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA5FE31F-A49A-41EE-AE2E-0C4F46683642}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B411712D-0B64-4975-9963-CC17E4B14A03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B411712D-0B64-4975-9963-CC17E4B14A03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B411712D-0B64-4975-9963-CC17E4B14A03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B411712D-0B64-4975-9963-CC17E4B14A03}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
