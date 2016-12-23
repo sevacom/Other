@@ -1,4 +1,5 @@
 ﻿using Nancy;
+using Nancy.Diagnostics;
 using Nancy.TinyIoc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -14,6 +15,9 @@ namespace Samples.NancyFx
 
             container.Register<JsonSerializer, CustomJsonSerializer>();
         }
+
+        protected override DiagnosticsConfiguration DiagnosticsConfiguration => 
+            new DiagnosticsConfiguration { Password = @"1" };
     }
 
     public sealed class CustomJsonSerializer : JsonSerializer
