@@ -25,6 +25,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samples.NancyFx.Tests", "Tests\Samples.NancyFx.Tests\Samples.NancyFx.Tests.csproj", "{11DF4631-F8B1-4921-AE93-69F8D3A73FBA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{F14FF60A-C6D9-4222-93E8-95C9723F581F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F14FF60A-C6D9-4222-93E8-95C9723F581F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F14FF60A-C6D9-4222-93E8-95C9723F581F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11DF4631-F8B1-4921-AE93-69F8D3A73FBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11DF4631-F8B1-4921-AE93-69F8D3A73FBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11DF4631-F8B1-4921-AE93-69F8D3A73FBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11DF4631-F8B1-4921-AE93-69F8D3A73FBA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -51,5 +57,6 @@ Global
 		{CA5FE31F-A49A-41EE-AE2E-0C4F46683642} = {9FD4A6E4-C26F-4B45-AC6C-831EB304770B}
 		{B411712D-0B64-4975-9963-CC17E4B14A03} = {9FD4A6E4-C26F-4B45-AC6C-831EB304770B}
 		{F14FF60A-C6D9-4222-93E8-95C9723F581F} = {9FD4A6E4-C26F-4B45-AC6C-831EB304770B}
+		{11DF4631-F8B1-4921-AE93-69F8D3A73FBA} = {5E32F48E-2ED0-4A12-8D08-2C15FA65E9F5}
 	EndGlobalSection
 EndGlobal

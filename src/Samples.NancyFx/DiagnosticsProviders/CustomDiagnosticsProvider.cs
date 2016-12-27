@@ -1,6 +1,6 @@
 using Nancy.Diagnostics;
 
-namespace Samples.NancyFx
+namespace Samples.NancyFx.DiagnosticsProviders
 {
     /// <summary>
     /// Diagnostics http://<address-of-your-application>/_Nancy/
@@ -9,21 +9,22 @@ namespace Samples.NancyFx
     {
         public string Name => "Custom diagnostics provider";
 
-        public string Description => "Provides custom diagnostics capabilities";
+        public string Description => "Custom diagnostics provider description";
 
         public object DiagnosticObject => this;
 
         [Description("Greets a person using their name")]
         //[Template("<p>{{Model.Result}}</p>")]
-        public string Greet(string name)
+        public string HelloMethodWithDescription(string name)
         {
-            return string.Concat("Hi, ", name);
+            return $"Hello, {name}";
         }
 
-        public string GetProcessInfoDescription => "Информация о процессе через свойство";
-        public string GetProcessInfo(string param)
+        public string HelloProperty => "Информация о процессе через свойство";
+
+        public string HelloMethod(string param)
         {
-            return $"ProcessInfo Param {param}";
+            return $"HelloMethod Param = {param}";
         }
     }
 }

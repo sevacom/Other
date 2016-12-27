@@ -2,8 +2,7 @@
 using Nancy.Diagnostics;
 using Nancy.TinyIoc;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Serialization;
+using Samples.NancyFx.Common;
 
 namespace Samples.NancyFx
 {
@@ -14,24 +13,12 @@ namespace Samples.NancyFx
             base.ConfigureApplicationContainer(container);
 
             container.Register<JsonSerializer, CustomJsonSerializer>();
+
+            // Абстрактные классы или интерфейсы по умолчанию регистрируются как Singleton
+            container.Register<ISimpleDependency, SimpleDependency>();
         }
 
         protected override DiagnosticsConfiguration DiagnosticsConfiguration => 
             new DiagnosticsConfiguration { Password = @"1" };
-    }
-
-    public sealed class CustomJsonSerializer : JsonSerializer
-    {
-        public CustomJsonSerializer()
-        {
-            ContractResolver = new CamelCasePropertyNamesContractResolver();
-            Converters.Add(new StringEnumConverter
-            {
-                AllowIntegerValues = false,
-                CamelCaseText = true
-            });
-            Formatting = Formatting.Indented;
-            
-        }
     }
 }

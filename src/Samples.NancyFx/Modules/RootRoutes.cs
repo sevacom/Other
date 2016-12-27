@@ -1,12 +1,18 @@
-﻿using Nancy;
+﻿using System;
+using Nancy;
 using Nancy.ModelBinding;
 
 namespace Samples.NancyFx.Modules
 {
     public class RootRoutes : NancyModule
     {
-        public RootRoutes()
+        private readonly ISimpleDependency _dependency;
+
+        public RootRoutes(ISimpleDependency dependency)
         {
+            if (dependency == null) throw new ArgumentNullException(nameof(dependency));
+            _dependency = dependency;
+
             Get["/"] = Index;
             Get["json"] = Json;
             Get["hello/{name}"] = HelloName;
@@ -15,23 +21,24 @@ namespace Samples.NancyFx.Modules
 
         private dynamic Json(dynamic parameters)
         {
-            var test = new
+            var test = new Person
             {
                 Name = "Seavcom",
                 Id = 12345,
                 Collection = new[] { "item1", "item2" },
-                Occupation = "Software Developer"
+                Occupation = "Software Developer",
+                SimpleProviderCounter = _dependency.ConstructorCounter
             };
 
             return Response.AsJson(test);
         }
 
-        private dynamic Index(dynamic parameters)
+        private static dynamic Index(dynamic parameters)
         {
             return "Hello World";
         }
 
-        private dynamic HelloName(dynamic parameters)
+        private static dynamic HelloName(dynamic parameters)
         {
             var name = parameters.name;
             return string.Format("Hello there {0}", name);
@@ -49,11 +56,19 @@ namespace Samples.NancyFx.Modules
 
     public class Person
     {
+        public Person()
+        {
+            Collection = new string[0];
+        }
+
         public string Name { get; set; }
 
         public int Id { get; set; }
 
         public string Occupation { get; set; }
 
+        public string[] Collection { get; set; }
+
+        public int SimpleProviderCounter { get; set; }
     }
 }
