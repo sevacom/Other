@@ -75,10 +75,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="SimpleDataBase.mdf">
+    <Content Include="DataBase\SimpleDataBase.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="SimpleDataBase_log.ldf">
+    <Content Include="DataBase\SimpleDataBase_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>SimpleDataBase.mdf</DependentUpon>
     </Content>
