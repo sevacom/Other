@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Samples.Dapper.Dto;
 using Samples.Dapper.Query;
 
-namespace Samples.Dapper
+namespace Samples.Dapper.DataAccess
 {
     public class ProductRepository
     {

@@ -12,13 +12,7 @@ namespace Samples.Dapper
     {
         public static void Main(string[] args)
         {
-            var target = new MssqlConnectionFactory();
-            using (var connection = target.Create())
-            {
-                connection.Open();
-                //connection.QuerySingleOrDefault()
-                connection.Close();
-            }
+            
         }
     }
 }
