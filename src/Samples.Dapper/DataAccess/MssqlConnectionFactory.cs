@@ -1,6 +1,7 @@
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using Samples.Dapper.DataAccess.Query;
 
 namespace Samples.Dapper.DataAccess
 {
@@ -14,6 +15,8 @@ namespace Samples.Dapper.DataAccess
                 .ConnectionStrings["MssqlDataBaseConnectionString"]
                 .ConnectionString;
         }
+
+        public IQueriesProvider QueriesProvider { get; } = new MssqlQueriesProvider();
 
         public IDbConnection Create()
         {
