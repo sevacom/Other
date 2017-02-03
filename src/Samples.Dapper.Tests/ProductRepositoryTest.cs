@@ -29,7 +29,7 @@ namespace Samples.Dapper.Tests
             var expectedProduct = new ProductDto
             {
                 Id = -1,
-                Name = "Milk"
+                Name = "Milk1"
             };
 
             _target.Add(expectedProduct);
