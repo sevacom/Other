@@ -70,14 +70,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccess\CommandQuery\CreateProductCommand.cs" />
+    <Compile Include="DataAccess\CommandQuery\DeleteProductCommand.cs" />
+    <Compile Include="DataAccess\CommandQuery\ICommand.cs" />
+    <Compile Include="DataAccess\CommandQuery\IQuery.cs" />
+    <Compile Include="DataAccess\CommandQuery\SelectAllProducts.cs" />
+    <Compile Include="DataAccess\CommandQuery\SelectProductByIdQuery.cs" />
     <Compile Include="DataAccess\DapperQueryObjectExtensions.cs" />
     <Compile Include="DataAccess\IConnectionFactory.cs" />
-    <Compile Include="DataAccess\Query\IQueriesProvider.cs" />
+    <Compile Include="DataAccess\IDatabase.cs" />
     <Compile Include="DataAccess\Query\MssqlProductQueries.cs" />
     <Compile Include="DataAccess\Query\QueryObject.cs" />
     <Compile Include="DataAccess\Query\IProductQueries.cs" />
     <Compile Include="DataAccess\MssqlConnectionFactory.cs" />
-    <Compile Include="DataAccess\Query\MssqlQueriesProvider.cs" />
     <Compile Include="Dto\ProductDto.cs" />
     <Compile Include="DataAccess\ProductRepository.cs" />
     <Compile Include="Program.cs" />

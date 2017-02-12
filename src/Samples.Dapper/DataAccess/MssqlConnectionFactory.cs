@@ -5,7 +5,7 @@ using Samples.Dapper.DataAccess.Query;
 
 namespace Samples.Dapper.DataAccess
 {
-    public class MssqlConnectionFactory: IConnectionFactory
+    public class MssqlConnectionFactory: IConnectionFactory, IQueryBuilder
     {
         private readonly string _connectionString;
 
@@ -16,12 +16,12 @@ namespace Samples.Dapper.DataAccess
                 .ConnectionString;
         }
 
-        public IQueriesProvider QueriesProvider { get; } = new MssqlQueriesProvider();
-
         public IDbConnection Create()
         {
             var builder = new SqlConnectionStringBuilder(_connectionString);
             return new SqlConnection(builder.ConnectionString);
         }
+
+        public IProductQueries ProductQueries { get; } = new MssqlProductQueries();
     }
 }

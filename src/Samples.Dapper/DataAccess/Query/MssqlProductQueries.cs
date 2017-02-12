@@ -1,4 +1,6 @@
-﻿using Samples.Dapper.Dto;
+﻿using System.Collections.Generic;
+using Samples.Dapper.DataAccess.CommandQuery;
+using Samples.Dapper.Dto;
 
 namespace Samples.Dapper.DataAccess.Query
 {

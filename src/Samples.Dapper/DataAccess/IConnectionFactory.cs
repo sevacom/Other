@@ -6,7 +6,10 @@ namespace Samples.Dapper.DataAccess
     public interface IConnectionFactory
     {
         IDbConnection Create();
+    }
 
-        IQueriesProvider QueriesProvider { get; }
+    public interface IQueryBuilder
+    {
+        IProductQueries ProductQueries { get; }
     }
 }

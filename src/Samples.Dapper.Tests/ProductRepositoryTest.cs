@@ -9,18 +9,19 @@ namespace Samples.Dapper.Tests
     [TestFixture]
     public class ProductRepositoryTest
     {
-        private ProductRepository _target;
+        protected IProductRepository Target;
 
         [SetUp]
-        public void Setup()
+        public virtual void Setup()
         {
-            _target = new ProductRepository(new MssqlConnectionFactory());
+            var factory = new MssqlConnectionFactory();
+            Target = new ProductRepositoryWithQueryObject(new Database(factory), factory);
         }
 
         [TearDown]
         public void TearDown()
         {
-            _target.Delete();
+            Target.Delete();
         }
 
         [Test]
@@ -32,9 +33,9 @@ namespace Samples.Dapper.Tests
                 Name = "Milk1"
             };
 
-            _target.Add(expectedProduct);
+            Target.Add(expectedProduct);
 
-            var actualProducts = _target.GetProducts();
+            var actualProducts = Target.GetProducts();
             actualProducts.Should()
                 .HaveCount(1)
                 .And
@@ -52,8 +53,8 @@ namespace Samples.Dapper.Tests
                 Price = 12.5f
             };
 
-            var actualInsertedProduct = _target.Add(expectedProduct);
-            var actualSelectedProduct = _target.GetProduct(actualInsertedProduct.Id);
+            var actualInsertedProduct = Target.Add(expectedProduct);
+            var actualSelectedProduct = Target.GetProduct(actualInsertedProduct.Id);
 
             actualInsertedProduct.Id.Should().BePositive();
             actualInsertedProduct.Created.Should().BeAfter(DateTime.MinValue);
@@ -62,6 +63,17 @@ namespace Samples.Dapper.Tests
 
             actualSelectedProduct.Should().NotBeNull();
             actualSelectedProduct.ShouldBeEquivalentTo(actualInsertedProduct);
+        }
+    }
+
+    [TestFixture]
+    public class ProductRepositoryWithCommandQueryTest : ProductRepositoryTest
+    {
+        [SetUp]
+        public override void Setup()
+        {
+            Target = new ProductRepositoryWithCommandQuery(
+                new Database(new MssqlConnectionFactory()));
         }
     }
 }
