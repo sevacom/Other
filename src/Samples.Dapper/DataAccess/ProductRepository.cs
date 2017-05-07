@@ -20,11 +20,11 @@ namespace Samples.Dapper.DataAccess
         private readonly IDatabase _database;
         private readonly IProductQueries _productQueries;
 
-        public ProductRepositoryWithQueryObject(IDatabase database, IQueryBuilder queryBuilder)
+        public ProductRepositoryWithQueryObject(IDatabase database, IProductQueries productQueries)
         {
             if (database == null) throw new ArgumentNullException(nameof(database));
-            if (queryBuilder == null) throw new ArgumentNullException(nameof(queryBuilder));
-            _productQueries = queryBuilder.ProductQueries;
+            if (productQueries == null) throw new ArgumentNullException(nameof(productQueries));
+            _productQueries = productQueries;
             _database = database;
         }
 

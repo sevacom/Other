@@ -15,7 +15,7 @@ namespace Samples.Dapper.Tests
         public virtual void Setup()
         {
             var factory = new MssqlConnectionFactory();
-            Target = new ProductRepositoryWithQueryObject(new Database(factory), factory);
+            Target = new ProductRepositoryWithQueryObject(new Database(factory), factory.ProductQueries);
         }
 
         [TearDown]
@@ -24,7 +24,7 @@ namespace Samples.Dapper.Tests
             Target.Delete();
         }
 
-        [Test]
+        [Test, Category("Integration")]
         public void ShouldGetProducts()
         {
             var expectedProduct = new ProductDto
@@ -42,7 +42,7 @@ namespace Samples.Dapper.Tests
                 .OnlyContain(p => p.Name == expectedProduct.Name);
         }
 
-        [Test]
+        [Test, Category("Integration")]
         public void ShouldAddProduct()
         {
             var expectedProduct = new ProductDto
