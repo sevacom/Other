@@ -7,7 +7,7 @@ namespace Samples.InterviewTasks.Tests
     public class GenericTests
     {
         [Test]
-        public void ShouldOneStaticFieldForGenericWithSpecificType()
+        public void ShouldOneStaticFieldPerGenericWithSpecificType()
         {
             GenericClass<Model1>.StaticValue = 42;
             GenericClass<Model2>.StaticValue = 43;
@@ -21,15 +21,10 @@ namespace Samples.InterviewTasks.Tests
         [Test]
         public void ShouldCovariant()
         {
-            var val1 = new GenericCovarian<Model1>();
-            var val2 = new GenericCovarian<Model2>();
+            var val1 = new GenericClass<Model1>();
+            var val2 = new GenericClass<Model2>();
             CovariantMethod(val1);
             CovariantMethod(val2);
-        }
-
-        private class GenericClass<T>
-        {
-            public static int StaticValue = 2;
         }
 
         private class Model1 { }
@@ -46,8 +41,10 @@ namespace Samples.InterviewTasks.Tests
             void Set(T arg);
         }
 
-        private class GenericCovarian<T> : IGenericCovariant<T>
+        private class GenericClass<T> : IGenericCovariant<T>
         {
+            public static int StaticValue = 2;
+
             public T Get()
             {
                 return default(T);
