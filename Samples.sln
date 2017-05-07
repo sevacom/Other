@@ -35,6 +35,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samples.AspNet.WebApi", "sr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samples.InterviewTasks", "src\Samples.InterviewTasks\Samples.InterviewTasks.csproj", "{0066509A-BB93-4F55-88F7-3A269D8D2981}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samples.InterviewTasks.Tests", "src\Samples.InterviewTasks.Tests\Samples.InterviewTasks.Tests.csproj", "{BEE00E59-28B2-4ADB-AAB4-983288D1D82A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +75,10 @@ Global
 		{0066509A-BB93-4F55-88F7-3A269D8D2981}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0066509A-BB93-4F55-88F7-3A269D8D2981}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0066509A-BB93-4F55-88F7-3A269D8D2981}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEE00E59-28B2-4ADB-AAB4-983288D1D82A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEE00E59-28B2-4ADB-AAB4-983288D1D82A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEE00E59-28B2-4ADB-AAB4-983288D1D82A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEE00E59-28B2-4ADB-AAB4-983288D1D82A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -86,5 +92,6 @@ Global
 		{EE669406-127E-4628-82DA-3EA87B1BA89E} = {5E32F48E-2ED0-4A12-8D08-2C15FA65E9F5}
 		{B349A35A-F0D4-4419-9011-E85BA53D57B8} = {9FD4A6E4-C26F-4B45-AC6C-831EB304770B}
 		{0066509A-BB93-4F55-88F7-3A269D8D2981} = {9FD4A6E4-C26F-4B45-AC6C-831EB304770B}
+		{BEE00E59-28B2-4ADB-AAB4-983288D1D82A} = {5E32F48E-2ED0-4A12-8D08-2C15FA65E9F5}
 	EndGlobalSection
 EndGlobal
