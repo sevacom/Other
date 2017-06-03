@@ -1,5 +1,4 @@
-﻿using System;
-using FluentAssertions;
+﻿using FluentAssertions;
 using NUnit.Framework;
 
 namespace Samples.InterviewTasks.Tests
@@ -21,9 +20,13 @@ namespace Samples.InterviewTasks.Tests
             string str1 = "Int32";
             string str2 = typeof (int).Name;
 
+            // RefEquals
             (obj == str1).Should().BeTrue();
+
+            // Equals
             (str1 == str2).Should().BeTrue();
 
+            // RefEquals
             (obj == str2).Should().BeFalse();
         }
 
@@ -34,7 +37,10 @@ namespace Samples.InterviewTasks.Tests
             string str1 = "";
             string str2 = string.Empty;
 
+            // RefEquals
             (obj == str1).Should().BeTrue();
+
+            // Equals
             (str1 == str2).Should().BeTrue();
 
             // True - In the .NET Framework 1.0, .NET Framework 1.1, and .NET Framework 3.5 SP1 и выше
