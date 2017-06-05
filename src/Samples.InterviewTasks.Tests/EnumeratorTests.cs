@@ -63,5 +63,42 @@ namespace Samples.InterviewTasks.Tests
             yield return 20;
             Console.WriteLine(Padding + "Just after yield return 1");
         }
+
+        private void ForeachImpl()
+        {
+            var values = GetNumbersEnumerable();
+            var funcs = new List<Func<int>>();
+
+            foreach (var v in values)
+            {
+                var v2 = v;
+                funcs.Add(() => v2);
+            }
+
+            
+            IEnumerator<int> e = ((IEnumerable<int>)values).GetEnumerator();
+            try
+            {
+                // äî 4.0 âêë
+                int m; // ÇÀ ÖÈÊËÎÌ foreach
+                while (e.MoveNext())
+                {
+                    m = (int)e.Current;
+                    funcs.Add(() => m);
+                }
+
+                // 4.5 è âûøå
+                //while (e.MoveNext())
+                //{
+                //    int m; // ÂÍÓÒÐÈ ÖÈÊËÀ
+                //    m = (int)e.Current;
+                //    funcs.Add(() => m);
+                //}
+            }
+            finally
+            {
+                if (e != null) ((IDisposable)e).Dispose();
+            }
+        }
     }
 }
