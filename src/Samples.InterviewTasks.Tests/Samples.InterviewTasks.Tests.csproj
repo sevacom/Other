@@ -59,6 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EnumeratorTests.cs" />
     <Compile Include="ExceptionHandlingTests.cs" />
     <Compile Include="GenericTests.cs" />
     <Compile Include="StringInterningTests.cs" />

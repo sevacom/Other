@@ -16,9 +16,10 @@ namespace Samples.InterviewTasks.Tests
         {
             GenericClass<Base>.StaticField = 42;
             GenericClass<Derived>.StaticField = 43;
-            
+            GenericClass<Model>.StaticField = 44;
+
             GenericClass<Derived>.StaticField.Should().NotBe(GenericClass<Base>.StaticField);
-            GenericClass<Model>.StaticField.Should().Be(2);
+            GenericClass<Model>.StaticField.Should().Be(44);
         }
 
         [Test]
