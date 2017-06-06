@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Text;
 using FluentAssertions;
 using NUnit.Framework;
 
@@ -11,19 +12,24 @@ namespace Samples.InterviewTasks.Tests
         [Test]
         public void ShouldCopyValueType()
         {
-            var output = new StringWriter();
-            var outString = output.GetStringBuilder();
-            Console.SetOut(output);
-            
+            var outString = SetupConsoleWriteBuffer();
             var foo  = new Foo();
-            Console.Write(foo);
-            outString.ToString().Should().Be("AAA");
 
-            outString.Clear();
+            Console.WriteLine(foo);
+            Console.WriteLine(foo);
 
-            Console.Write(foo);
-            output.ToString().Should().Be("AAA");
+            outString.ToString().Should().Be(
+                "AAA\r\n" +
+                "AAA\r\n");
 
+        }
+
+        private static StringBuilder SetupConsoleWriteBuffer()
+        {
+            var output = new StringWriter();
+            Console.SetOut(output);
+
+            return output.GetStringBuilder();
         }
 
         private struct Foo
