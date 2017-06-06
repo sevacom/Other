@@ -7,7 +7,7 @@ namespace Samples.InterviewTasks.Tests
     public class ExceptionHandlingTests
     {
         [Test]
-        public void ShouldTryCatchFinallyExpectedOrder()
+        public void ShouldTryCatchFinallyExecuteExpectedOrder()
         {
             Assert.Throws<InvalidTimeZoneException>(() =>
             {
@@ -24,7 +24,6 @@ namespace Samples.InterviewTasks.Tests
                     throw new InvalidTimeZoneException("3");
                 }
             });
-
         }
     }
 }

@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using FluentAssertions;
 using NUnit.Framework;
 
 namespace Samples.InterviewTasks.Tests
@@ -7,6 +9,8 @@ namespace Samples.InterviewTasks.Tests
     [TestFixture]
     public class EnumeratorTests
     {
+        private static readonly string Padding = new string(' ', 30);
+
         [Test]
         public void ShouldManualYieldEnumerator()
         {
@@ -36,7 +40,23 @@ namespace Samples.InterviewTasks.Tests
             Console.WriteLine("After foreach GetNumbersEnumerable()");
         }
 
-        private static readonly string Padding = new string(' ', 30);
+        [Test]
+        public void ShouldLinqClosures()
+        {
+            var actions = new List<Func<int>>();
+
+            foreach (var i in Enumerable.Range(1, 4))
+            {
+                actions.Add(() => i);
+            }
+
+            // C# 5.0+
+            actions.Select(p => p()).Should().BeEquivalentTo(1, 2, 3, 4);
+
+            // C# 1.0 - 4.0
+            //actions.Select(p => p()).Should().BeEquivalentTo(4, 4, 4, 4);
+
+        }
 
         private static IEnumerator<int> GetNumbersEnumerator()
         {
@@ -69,17 +89,17 @@ namespace Samples.InterviewTasks.Tests
             var values = GetNumbersEnumerable();
             var funcs = new List<Func<int>>();
 
-            foreach (var v in values)
-            {
-                var v2 = v;
-                funcs.Add(() => v2);
-            }
+            //foreach (var v in values)
+            //{
+            //    var v2 = v;
+            //    funcs.Add(() => v2);
+            //}
 
             
             IEnumerator<int> e = ((IEnumerable<int>)values).GetEnumerator();
             try
             {
-                // ‰Ó 4.0 ‚ÍÎ
+                //  C# 1.0 - 4.0
                 int m; // «¿ ÷» ÀŒÃ foreach
                 while (e.MoveNext())
                 {
@@ -87,7 +107,7 @@ namespace Samples.InterviewTasks.Tests
                     funcs.Add(() => m);
                 }
 
-                // 4.5 Ë ‚˚¯Â
+                // C# 5.0+
                 //while (e.MoveNext())
                 //{
                 //    int m; // ¬Õ”“–» ÷» À¿
@@ -97,7 +117,8 @@ namespace Samples.InterviewTasks.Tests
             }
             finally
             {
-                if (e != null) ((IDisposable)e).Dispose();
+                if (e != null)
+                    e.Dispose();
             }
         }
     }
