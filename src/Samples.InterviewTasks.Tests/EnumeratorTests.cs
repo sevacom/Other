@@ -32,12 +32,35 @@ namespace Samples.InterviewTasks.Tests
         [Test]
         public void ShouldForeachYieldEnumerator()
         {
-            Console.WriteLine("Before foreach GetNumbersEnumerable()");
-            foreach (var number in GetNumbersEnumerable())
+            Console.WriteLine("Before Execute GetNumbersEnumerable()");
+            var numbers = GetNumbersEnumerable();
+            Console.WriteLine("After Execute GetNumbersEnumerable()");
+
+            Console.WriteLine("Before foreach");
+            foreach (var number in numbers)
             {
                 Console.WriteLine($"Inside foreach number = {number}");
             }
             Console.WriteLine("After foreach GetNumbersEnumerable()");
+        }
+
+        [Test]
+        public void ShouldThrowExceptionWhenBeginEnumerate()
+        {
+            IEnumerable<string> result = new string[0];
+
+            Assert.DoesNotThrow(() =>
+            {
+                result = GetEnumerableWithException();
+            });
+
+            Assert.Throws<Exception>(() =>
+            {
+                foreach (var l in result)
+                {
+                    Console.WriteLine(l);
+                }
+            });     
         }
 
         [Test]
@@ -82,6 +105,14 @@ namespace Samples.InterviewTasks.Tests
             Console.WriteLine(Padding + "Just before yield return 1");
             yield return 20;
             Console.WriteLine(Padding + "Just after yield return 1");
+        }
+
+        private static IEnumerable<string> GetEnumerableWithException()
+        {
+            throw new Exception("path");
+
+            yield return "1";
+            yield return "2";
         }
 
         private void ForeachImpl()

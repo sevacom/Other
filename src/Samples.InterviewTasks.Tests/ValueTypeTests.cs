@@ -34,7 +34,7 @@ namespace Samples.InterviewTasks.Tests
 
         private struct Foo
         {
-            int _value;
+            private int _value;
 
             public override string ToString()
             {
