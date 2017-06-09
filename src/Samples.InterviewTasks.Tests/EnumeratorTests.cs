@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
@@ -127,7 +128,7 @@ namespace Samples.InterviewTasks.Tests
             //}
 
             
-            IEnumerator<int> e = ((IEnumerable<int>)values).GetEnumerator();
+            IEnumerator e = values.GetEnumerator();
             try
             {
                 //  C# 1.0 - 4.0
@@ -148,8 +149,11 @@ namespace Samples.InterviewTasks.Tests
             }
             finally
             {
-                if (e != null)
-                    e.Dispose();
+                IDisposable disposable = e as IDisposable;
+                if (disposable != null)
+                {
+                    disposable.Dispose();
+                }
             }
         }
     }
