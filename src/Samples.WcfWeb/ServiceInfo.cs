@@ -2,7 +2,7 @@
 using System.ServiceModel.Web;
 using System.Text;
 
-namespace Samples.WcfWeb
+namespace Samples.WcfWeb  
 {
 	public class ServiceInfo : IServiceInfo
 	{
